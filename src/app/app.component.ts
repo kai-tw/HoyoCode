@@ -8,7 +8,7 @@ import {TabComponent} from './tab/tab.component';
 import {CodeData} from '../data-model/code-data';
 import {FooterComponent} from './footer/footer.component';
 import {DisqusComponent} from './disqus/disqus.component';
-import jsonData from '../assets/code.json';
+import jsonData from '../assets/HoyoCode.json';
 
 @Component({
   selector: 'app-root',
