@@ -38,10 +38,9 @@ jobs:
       - name: Download the code file
         uses: k0staa/download-gdrive-file-action@v1
         with:
-          service-account-auth-json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          service-account-key-json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           download-file-name: HoyoCode.json
           download-to: ./src/assets/code.json
-          export-media-type: application/json
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
