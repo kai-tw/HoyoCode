@@ -1,0 +1,30 @@
+.tab-container
+  margin: 1em 1.5em 2em
+  padding: 3em 1.5em
+  border-radius: 24px
+  background: rgba(128, 128, 128, 0.08)
+
+  .tab-button-container
+    display: flex
+    flex-direction: row
+    justify-content: center
+    margin-bottom: 1em
+    width: 100%
+    box-sizing: border-box
+    overflow: auto
+
+    .tab-button
+      padding: 0
+      border: none
+      background: transparent
+      cursor: pointer
+      transition: all 0.3s ease-in-out
+
+      &:not(:first-child)
+        margin-left: 1em
+        padding-left: 1em
+        border-left: 1px solid rgba(128, 128, 128, 0.8)
+
+      &.active
+        font-weight: bold
+        text-decoration: underline

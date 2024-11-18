@@ -1,0 +1,22 @@
+<div class="overflow-table">
+  <table>
+    <thead>
+    <tr>
+      <th>兌換碼</th>
+      <th>過期時間</th>
+      <th>新增時間</th>
+      <th>備註</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let codeData of codeList">
+      <td class="code"><a href="{{ getUrl(codeData.code) }}" target="_blank">{{ codeData.code }}</a></td>
+      <td class="expire-time">
+        <app-timer [targetTime]="codeData.displayExpireTime()"></app-timer>
+      </td>
+      <td class="add-time">{{ codeData.displayAddTime() }}</td>
+      <td class="note">{{ codeData.note }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

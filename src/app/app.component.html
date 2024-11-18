@@ -1,0 +1,17 @@
+<app-header></app-header>
+<main id="app-main">
+  <app-hero></app-hero>
+  <app-tabs>
+    <app-tab title="原神">
+      <app-code-table [codeList]="codeList" tableType="genshin"></app-code-table>
+    </app-tab>
+    <app-tab title="崩壞：星穹鐵道">
+      <app-code-table [codeList]="codeList" tableType="hsr"></app-code-table>
+    </app-tab>
+    <app-tab title="絕區零">
+      <app-code-table [codeList]="codeList" tableType="zenless"></app-code-table>
+    </app-tab>
+  </app-tabs>
+  <app-disqus></app-disqus>
+</main>
+<app-footer></app-footer>

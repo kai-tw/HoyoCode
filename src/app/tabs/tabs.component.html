@@ -1,0 +1,11 @@
+<div class="tab-container">
+  <div class="tab-button-container">
+    <button (click)="switchTab(tab)"
+            *ngFor="let tab of tabs"
+            [class.active]="tab.isActive"
+            class="tab-button">
+      {{ tab.title }}
+    </button>
+  </div>
+  <ng-content></ng-content>
+</div>
