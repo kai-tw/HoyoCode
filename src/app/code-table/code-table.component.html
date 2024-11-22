@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let codeData of codeList">
-      <td class="code"><a href="{{ getUrl(codeData.code) }}" target="_blank">{{ codeData.code }}</a></td>
+      <td class="code"><a href="{{ getUrl(codeData.code) }}">{{ codeData.code }}</a></td>
       <td class="expire-time">
         <app-timer [targetTime]="codeData.displayExpireTime()"></app-timer>
       </td>
