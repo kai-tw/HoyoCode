@@ -1,6 +1,6 @@
 <div class="tab-container">
   <div class="tab-button-container">
-    <button (click)="switchTab(tab)"
+    <button (click)="!tab.isActive ? switchTab(tab) : null"
             *ngFor="let tab of tabs"
             [class.active]="tab.isActive"
             class="tab-button">
