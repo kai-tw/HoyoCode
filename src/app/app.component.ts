@@ -29,8 +29,8 @@ import jsonData from '../assets/HoyoCode.json';
 export class AppComponent {
   @ContentChildren(CodeTableComponent) codeTables!: QueryList<CodeTableComponent>;
   protected codeList: CodeData[] = jsonData
-    .map((e) => new CodeData(e))
-    .filter((e) => e.isValid())
+    .map((e: any) => new CodeData(e))
+    .filter((e: CodeData) => e.isValid())
     .sort(CodeData.compare);
 
   constructor() {

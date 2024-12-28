@@ -17,31 +17,21 @@ export class CodeData {
   static compare(a: CodeData, b: CodeData): number {
     const expireTimeCompare = CodeData.compareTime(a.expireTime, b.expireTime);
     if (expireTimeCompare !== 0) {
-      return expireTimeCompare;
+      return -expireTimeCompare;
     }
 
     const addTimeCompare = CodeData.compareTime(a.addTime, b.addTime);
     if (addTimeCompare !== 0) {
-      return addTimeCompare;
+      return -addTimeCompare;
     }
 
     return a.code.localeCompare(b.code, 'en', {sensitivity: 'base'});
   }
 
   private static compareTime(a: string, b: string): number {
-    if (a === CodeData.eternalTime) {
-      return 1;
-    } else if (b === CodeData.eternalTime) {
-      return -1;
-    } else if (!a) {
-      return 1;
-    } else if (!b) {
-      return -1;
-    } else {
-      const aTime = new Date(a);
-      const bTime = new Date(b);
-      return aTime.getTime() - bTime.getTime();
-    }
+    const aStr = a === CodeData.eternalTime ? "0" : (a ?? "1");
+    const bStr = b === CodeData.eternalTime ? "0" : (b ?? "1");
+    return new Date(aStr).getTime() - new Date(bStr).getTime();
   }
 
   isValid(): boolean {
