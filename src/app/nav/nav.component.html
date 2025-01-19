@@ -1,15 +1,22 @@
-<button (click)="openMenu()" id="app-nav-button">
-  <ng-icon name="matMenuRound" size="1.5em"></ng-icon>
+<button (click)="openMenu()" id="app-nav-button" class="size-6">
+  <ng-icon name="matMenuRound" size="24"></ng-icon>
 </button>
-<nav id="app-nav">
-  <div class="nav-wrapper">
-    <ul>
-      <li><a href="https://www.kai-wu.net">Kaiの部落</a></li>
-      <li><a href="https://www.kai-wu.net/%e6%84%8f%e8%a6%8b%e5%9b%9e%e9%a5%8b/">意見回饋</a></li>
-      <li><a href="https://github.com/kai-tw/HoyoCode">GitHub 原始碼</a></li>
-    </ul>
-    <button (click)="closeMenu()" class="close-button">
-      <ng-icon name="matCloseRound" size="1.5em"></ng-icon>
+<nav id="app-nav" class="fixed inset-0 bg-white/80">
+  <div class="flex flex-col justify-end items-end max-w-3xl m-auto px-8 py-12">
+    <button (click)="closeMenu()" class="my-4 size-6">
+      <ng-icon name="matCloseRound" size="24"></ng-icon>
     </button>
+    <ul class="text-right">
+      @for(linkObject of linkList; track linkObject.url) {
+      <li>
+        <a
+          [href]="linkObject.url"
+          class="block py-1 text-black hover:text-slate-500 transition-all duration-300 ease-in-out"
+        >
+          {{ linkObject.label }}
+        </a>
+      </li>
+      }
+    </ul>
   </div>
 </nav>

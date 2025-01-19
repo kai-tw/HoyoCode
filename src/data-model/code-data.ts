@@ -1,10 +1,12 @@
+import { GameType } from "./game-type";
+
 export class CodeData {
   static readonly eternalTime: string = "-";
-  public game: string = '';
-  public code: string = '';
-  public expireTime: string = '';
-  public addTime: string = '';
-  public note: string = '';
+  public game: GameType;
+  public code: string = "";
+  public expireTime: string = "";
+  public addTime: string = "";
+  public note: string = "";
 
   constructor(json: any) {
     this.game = json.game;
@@ -17,7 +19,7 @@ export class CodeData {
   static compare(a: CodeData, b: CodeData): number {
     const expireTimeCompare = CodeData.compareTime(a.expireTime, b.expireTime);
     if (expireTimeCompare !== 0) {
-      return -expireTimeCompare;
+      return expireTimeCompare;
     }
 
     const addTimeCompare = CodeData.compareTime(a.addTime, b.addTime);
@@ -25,12 +27,12 @@ export class CodeData {
       return -addTimeCompare;
     }
 
-    return a.code.localeCompare(b.code, 'en', {sensitivity: 'base'});
+    return a.code.localeCompare(b.code, "en", { sensitivity: "base" });
   }
 
   private static compareTime(a: string, b: string): number {
-    const aStr = a === CodeData.eternalTime ? "0" : (a ?? "1");
-    const bStr = b === CodeData.eternalTime ? "0" : (b ?? "1");
+    const aStr = a === CodeData.eternalTime ? 8.64e15 : a ?? 8.64e15 - 1;
+    const bStr = b === CodeData.eternalTime ? 8.64e15 : b ?? 8.64e15 - 1;
     return new Date(aStr).getTime() - new Date(bStr).getTime();
   }
 
@@ -43,11 +45,18 @@ export class CodeData {
     }
 
     // Time is matched with the pattern and is later than now
-    return !!(time.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/g) && new Date(time).getTime() > Date.now());
+    return !!(
+      time.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/g) &&
+      new Date(time).getTime() > Date.now()
+    );
   }
 
   displayExpireTime(): string {
-    return this.expireTime === "-" ? "永遠有效" : this.expireTime ? this.expireTime : "未知";
+    return this.expireTime === "-"
+      ? "永遠有效"
+      : this.expireTime
+      ? this.expireTime
+      : "未知";
   }
 
   displayAddTime(): string {

@@ -1,17 +1,35 @@
-<app-header></app-header>
-<main id="app-main">
-  <app-hero></app-hero>
-  <app-tabs>
-    <app-tab title="原神">
-      <app-code-table [codeList]="codeList" tableType="genshin"></app-code-table>
-    </app-tab>
-    <app-tab title="崩壞：星穹鐵道">
-      <app-code-table [codeList]="codeList" tableType="hsr"></app-code-table>
-    </app-tab>
-    <app-tab title="絕區零">
-      <app-code-table [codeList]="codeList" tableType="zenless"></app-code-table>
-    </app-tab>
-  </app-tabs>
-  <app-disqus></app-disqus>
-</main>
-<app-footer></app-footer>
+<div class="flex flex-col m-auto px-8 max-w-3xl min-h-full">
+  <app-header></app-header>
+  <main class="flex-1">
+    <div class="my-4 p-12 rounded-3xl bg-gray-100/80">
+      <div
+        class="flex flex-col justify-center items-center h-48"
+        [class]="status === LoadingStatusEnum.LOADED ? 'hidden' : ''"
+      >
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <app-tabs [class]="status === LoadingStatusEnum.LOADED ? '' : 'hidden'">
+        <app-tab title="原神">
+          <app-code-table
+            [codeList]="codeList"
+            [tableType]="GameTypeEnum.GENSHIN"
+          ></app-code-table>
+        </app-tab>
+        <app-tab title="崩壞：星穹鐵道">
+          <app-code-table
+            [codeList]="codeList"
+            [tableType]="GameTypeEnum.HSR"
+          ></app-code-table>
+        </app-tab>
+        <app-tab title="絕區零">
+          <app-code-table
+            [codeList]="codeList"
+            [tableType]="GameTypeEnum.ZZZ"
+          ></app-code-table>
+        </app-tab>
+      </app-tabs>
+    </div>
+    <app-disqus></app-disqus>
+  </main>
+  <app-footer></app-footer>
+</div>

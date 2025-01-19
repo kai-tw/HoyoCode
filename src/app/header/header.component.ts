@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import {NavComponent} from '../nav/nav.component';
+import { Component } from "@angular/core";
+import { NavComponent } from "../nav/nav.component";
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   standalone: true,
   imports: [NavComponent],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.sass'
+  templateUrl: "./header.component.html",
+  styleUrl: "./header.component.sass",
 })
 export class HeaderComponent {
-  title = '國際服兌換碼';
-  subtitle = '原神、崩壞：星穹鐵道、絕區零';
+  title = "CodeHunter";
+  subtitle = "遊戲兌換碼分享平台";
 }
